@@ -8,7 +8,7 @@ const history = createBrowserHistory()
 
 export default function App() {
   return (
-    <>
+    <div>
       <div>
         <Router history={history}>
           <Switch>
@@ -25,6 +25,6 @@ export default function App() {
           </Switch>
         </Router>
       </div>
-    </>
+    </div>
   );
 }

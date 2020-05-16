@@ -9,16 +9,19 @@ function* scanImage(action: ScanImage) {
     let image = action.payload.image;
     try {
         let response = yield call(OCRAPI.scanImage, url, image);
-        switch(response.status) {
+        switch (response.status) {
             case 200: {
                 let parsed = response.data.queryResult[0];
                 let scannedTextArray = parsed.description.split('\n');
                 yield put(OCRActionGenerators.scanImageSuccess(scannedTextArray))
                 break;
             }
+            default: {
+                yield put(OCRActionGenerators.scanImageFailure());
+            }
         }
     } catch (e) {
-        console.log(e);
+        yield put(OCRActionGenerators.scanImageFailure());
     }
 }
 

@@ -7,6 +7,7 @@ import createSagaMiddleware from '@redux-saga/core';
 import { Provider } from 'react-redux';
 import { mainReducer } from './Utils/MainReducer/mainReducer';
 import OCRWatcher from './OCR/Saga/ocrSaga';
+import './Design/index';
 
 const sagaMiddleWare = createSagaMiddleware();
 export const store = createStore(mainReducer, applyMiddleware(sagaMiddleWare));

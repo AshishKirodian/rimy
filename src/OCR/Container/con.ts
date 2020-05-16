@@ -5,7 +5,8 @@ import OCRActionGenerators from "../Actions/gen";
 export function mapStateToProps(appState: StoreTree, ownProps: any) {
     return {
         scanningLoader: appState.ocr.scanningLoader,
-        scannedText: appState.ocr.scannedText
+        scannedText: appState.ocr.scannedText,
+        failureMessage: appState.ocr.failureMessage
     }
 }
 export function mapDispatchToProps(dispatch: any, ownProps: any) {
