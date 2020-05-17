@@ -3,6 +3,7 @@ import { takeLatest, all, call, put } from "@redux-saga/core/effects";
 import OCRAPI from "../Actions/API";
 import { SITEAPI } from "../../Configuration/global";
 import OCRActionGenerators from "../Actions/gen";
+import HistoryActionGenerator from "../../History/Actions/gen";
 
 function* scanImage(action: ScanImage) {
     let url = SITEAPI + '/ocr/scan'
@@ -11,9 +12,11 @@ function* scanImage(action: ScanImage) {
         let response = yield call(OCRAPI.scanImage, url, image);
         switch (response.status) {
             case 200: {
-                let parsed = response.data.queryResult[0];
+                let parsed = response.data.queryResult.result[0];
                 let scannedTextArray = parsed.description.split('\n');
-                yield put(OCRActionGenerators.scanImageSuccess(scannedTextArray))
+                let imageURL = response.data.queryResult.imageURL;
+                yield put(OCRActionGenerators.scanImageSuccess(scannedTextArray));
+                yield put(HistoryActionGenerator.saveRecord(imageURL, scannedTextArray));
                 break;
             }
             default: {

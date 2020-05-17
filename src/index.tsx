@@ -8,11 +8,13 @@ import { Provider } from 'react-redux';
 import { mainReducer } from './Utils/MainReducer/mainReducer';
 import OCRWatcher from './OCR/Saga/ocrSaga';
 import './Design/index';
+import historyWatcher from './History/Saga/historySaga';
 
 const sagaMiddleWare = createSagaMiddleware();
 export const store = createStore(mainReducer, applyMiddleware(sagaMiddleWare));
 
 sagaMiddleWare.run(OCRWatcher);
+sagaMiddleWare.run(historyWatcher);
 
 ReactDOM.render(
   <React.StrictMode>

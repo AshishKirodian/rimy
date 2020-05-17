@@ -17,6 +17,7 @@ export default class OCRInput extends React.Component<Props, State> {
     }
     submitFile() {
         let { scanImage } = this.props;
+        let { selectedImage } = this.state;
         let element = document.getElementById('file-upload');
         if (!isNullOrUndefined(element)) {
             let file = (element as any).files[0];

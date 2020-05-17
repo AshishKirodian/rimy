@@ -23,7 +23,7 @@ export default class OCR extends React.Component<Props, any> {
                     </div>
                     <div className="row">
                         <div className="col-md-5">
-                            <OCRInput scanImage={scanImage} />
+                            <OCRInput scanImage={scanImage}  />
                         </div>
                         <div className="offset-md-2 col-md-5">
                             <OCROutput failureMessage={failureMessage} scannedText={scannedText} scanningLoader={scanningLoader} />
