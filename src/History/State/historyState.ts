@@ -6,7 +6,7 @@ export default interface HistoryState {
 export interface HistoryList {
     id: number;
     url: string;
-    scannedResult: string[];
+    scannedResult: string;
 }
 
 export function defaultHistoryList(): HistoryState {

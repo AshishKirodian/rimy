@@ -43,7 +43,7 @@ export default class History extends React.Component<Props, any> {
                                                         <img className="img-fluid" src={SITEAPI + '/static/' + list.url} />
                                                     </div>
                                                     <div className="col-md-6">
-                                                        {list.scannedResult.map((text, j) =>
+                                                        {list.scannedResult.split(',').map((text, j) =>
                                                             <p key={j}>{text}</p>
                                                         )}
                                                     </div>

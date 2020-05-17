@@ -9,7 +9,7 @@ function* saveRecord(action: SaveRecord) {
     
     try {
         let imageURL = action.payload.imageURL;
-        let scannedText = action.payload.scannedText;
+        let scannedText = action.payload.scannedText.join(',');
         let url = SITEAPI + '/history/save'
         yield call(HistoryAPI.saveRecord, url, { imageURL, scannedText});
     } catch(e) {
